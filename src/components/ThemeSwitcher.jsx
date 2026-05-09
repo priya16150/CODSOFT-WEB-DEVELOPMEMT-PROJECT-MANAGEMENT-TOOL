@@ -73,7 +73,7 @@ const ThemeSwitcher = () => {
           >
             🌅 Warm Sunset (Current)
           </div>
-          {/* You can add more themes here in the future */}
+         
         </div>
       )}
     </div>
