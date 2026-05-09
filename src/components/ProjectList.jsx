@@ -4,7 +4,7 @@ import ProjectForm from './ProjectForm';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
-// ==================== SKELETON LOADER COMPONENT ====================
+
 const ProjectSkeleton = () => {
   const { theme } = useTheme();
   return (
@@ -192,7 +192,6 @@ const ProjectList = () => {
     },
   };
 
-  // ==================== SKELETON LOADER VIEW ====================
   if (loading) {
     return (
       <div style={styles.container}>
@@ -207,7 +206,7 @@ const ProjectList = () => {
     );
   }
 
-  // ==================== MAIN RENDER ====================
+ 
   return (
     <div style={styles.container}>
       <div style={styles.header}>
