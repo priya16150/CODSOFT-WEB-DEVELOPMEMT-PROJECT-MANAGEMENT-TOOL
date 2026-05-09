@@ -4,10 +4,10 @@ const API_URL = 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 10000, // 10 seconds timeout
+  timeout: 10000, 
 });
 
-// Request interceptor: attach token to every request
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -22,10 +22,10 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor: handle common errors globally
+
 api.interceptors.response.use(
   (response) => {
-    // Any status code within 2xx triggers this
+    
     return response;
   },
   (error) => {
@@ -36,10 +36,10 @@ api.interceptors.response.use(
       
       switch (status) {
         case 401:
-          // Unauthorized – token expired or invalid
+        
           console.error('Unauthorized: Please log in again');
           localStorage.removeItem('token');
-          // Optional: redirect to login page if not already there
+        
           if (window.location.pathname !== '/login' && window.location.pathname !== '/') {
             window.location.href = '/';
           }
