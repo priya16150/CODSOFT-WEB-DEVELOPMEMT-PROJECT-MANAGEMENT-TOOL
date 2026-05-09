@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [showProjectForm, setShowProjectForm] = useState(false);
 
-  // Modal visibility states
+  
   const [showProjectsModal, setShowProjectsModal] = useState(false);
   const [showTasksModal, setShowTasksModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
@@ -46,7 +46,7 @@ const Dashboard = () => {
     setShowProjectForm(false);
   };
 
-  // Calculations
+ 
   const completedTasks = tasks.filter(t => t.status === 'Done').length;
   const totalTasks = tasks.length;
   const completionRate = totalTasks === 0 ? 0 : ((completedTasks / totalTasks) * 100).toFixed(1);
@@ -61,7 +61,7 @@ const Dashboard = () => {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
 
-  // Modal Styles
+ 
   const modalOverlayStyle = {
     position: 'fixed',
     top: 0,
@@ -123,7 +123,7 @@ const Dashboard = () => {
     marginLeft: '0.5rem',
   });
 
-  // Modal Components
+  
   const ProjectsModal = () => (
     <div style={modalOverlayStyle} onClick={() => setShowProjectsModal(false)}>
       <div style={modalContentStyle} onClick={e => e.stopPropagation()}>
@@ -248,7 +248,7 @@ const Dashboard = () => {
     </div>
   );
 
-  // Main styles
+  
   const styles = {
     container: {
       padding: '2rem',
@@ -354,7 +354,7 @@ const Dashboard = () => {
     },
   };
 
-  // Stagger animation delays for stat cards
+ 
   const cardDelays = ['0.05s', '0.1s', '0.15s', '0.2s', '0.25s'];
 
   if (loading) {
@@ -463,7 +463,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Modals */}
+   
       {showProjectsModal && <ProjectsModal />}
       {showTasksModal && <TasksModal />}
       {showCompletionModal && <CompletionModal />}
