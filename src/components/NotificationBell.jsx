@@ -10,7 +10,7 @@ const NotificationBell = () => {
   const dropdownRef = useRef(null);
   const prevUnreadCount = useRef(unreadCount);
 
-  // Trigger shake when unreadCount increases (new notification)
+  
   useEffect(() => {
     if (unreadCount > prevUnreadCount.current) {
       setShake(true);
