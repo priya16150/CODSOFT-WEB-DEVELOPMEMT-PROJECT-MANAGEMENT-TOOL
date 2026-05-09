@@ -6,7 +6,7 @@ const { protect } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// @route POST /api/tasks
+
 router.post('/', protect, async (req, res) => {
   const { title, description, project, assignedTo, deadline, status } = req.body;
   try {
@@ -25,7 +25,7 @@ router.post('/', protect, async (req, res) => {
       createdBy: req.user._id
     });
 
-    // Create notification for assigned user
+   
     const notification = await Notification.create({
       recipient: assignedTo,
       sender: req.user._id,
@@ -53,7 +53,6 @@ router.post('/', protect, async (req, res) => {
   }
 });
 
-// @route GET /api/tasks/project/:projectId
 router.get('/project/:projectId', protect, async (req, res) => {
   try {
     const tasks = await Task.find({ project: req.params.projectId })
@@ -66,7 +65,7 @@ router.get('/project/:projectId', protect, async (req, res) => {
   }
 });
 
-// @route PUT /api/tasks/:id
+
 router.put('/:id', protect, async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -92,7 +91,7 @@ router.put('/:id', protect, async (req, res) => {
 
     const updatedTask = await task.save();
 
-    // If task is marked as Done, notify the creator
+ 
     if (oldStatus !== 'Done' && newStatus === 'Done' && task.createdBy) {
       const notification = await Notification.create({
         recipient: task.createdBy,
@@ -122,7 +121,7 @@ router.put('/:id', protect, async (req, res) => {
   }
 });
 
-// @route DELETE /api/tasks/:id
+
 router.delete('/:id', protect, async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
