@@ -11,7 +11,7 @@ export const NotificationProvider = ({ children }) => {
   const { user } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
-  const socketRef = useRef(null); // useRef to avoid reconnection loops
+  const socketRef = useRef(null); 
 
   const fetchNotifications = async () => {
     if (!user) return;
@@ -49,44 +49,38 @@ export const NotificationProvider = ({ children }) => {
   useEffect(() => {
     if (!user) return;
 
-    // Connect to Socket.IO server
     const newSocket = io('http://localhost:5000', {
-      transports: ['websocket', 'polling'], // fallback
+      transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
     });
     socketRef.current = newSocket;
 
-    // Register user ID after connection
     newSocket.on('connect', () => {
       console.log('Socket connected, registering user:', user._id);
       newSocket.emit('register', user._id);
     });
 
-    // Listen for new notifications
     newSocket.on('new_notification', (notification) => {
       console.log('New notification received:', notification);
       setNotifications(prev => [notification, ...prev]);
       setUnreadCount(prev => prev + 1);
     });
 
-    // Handle connection errors
     newSocket.on('connect_error', (err) => {
       console.error('Socket connection error:', err.message);
     });
 
-    // Initial fetch from database (in case offline or missed messages)
     fetchNotifications();
 
-    // Cleanup on unmount or user change
     return () => {
       if (socketRef.current) {
         socketRef.current.disconnect();
         socketRef.current = null;
       }
     };
-  }, [user]); // re-run when user changes (login/logout)
+  }, [user]); 
 
   return (
     <NotificationContext.Provider value={{
