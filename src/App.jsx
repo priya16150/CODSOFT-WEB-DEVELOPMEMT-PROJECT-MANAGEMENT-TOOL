@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard';
 import ProjectList from './components/ProjectList';
 import ProjectDetail from './components/ProjectDetail';
 
-// ==================== WELCOME PAGE (with theme & animations) ====================
+
 const WelcomePage = ({ onGetStarted }) => {
   const { theme } = useTheme();
 
@@ -103,7 +103,6 @@ const WelcomePage = ({ onGetStarted }) => {
   );
 };
 
-// ==================== LOGIN / REGISTER PAGE (with theme, animations, high contrast) ====================
 const AuthPage = () => {
   const { login, register } = useAuth();
   const { theme } = useTheme();
@@ -278,7 +277,6 @@ const AuthPage = () => {
   );
 };
 
-// ==================== MAIN APP (after login) ====================
 function AuthenticatedApp() {
   return (
     <>
@@ -292,7 +290,6 @@ function AuthenticatedApp() {
   );
 }
 
-// ==================== ROOT APP CONTROLLER ====================
 function AppContent() {
   const { user, loading } = useAuth();
   const [showAuth, setShowAuth] = useState(false);
@@ -312,7 +309,6 @@ function AppContent() {
   return <AuthPage />;
 }
 
-// ==================== APP WRAPPER ====================
 function App() {
   return (
     <Router>
