@@ -58,7 +58,7 @@ export const ThemeProvider = ({ children }) => {
       font-family: 'Segoe UI', system-ui, sans-serif;
       color: ${current.text};
     }
-    /* ----- Enhanced Animations ----- */
+  
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -96,7 +96,7 @@ export const ThemeProvider = ({ children }) => {
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    /* Utility classes */
+   
     .animate-fadeUp { animation: fadeInUp 0.5s ease-out; }
     .animate-fadeLeft { animation: fadeInLeft 0.4s ease-out; }
     .animate-fadeRight { animation: fadeInRight 0.4s ease-out; }
@@ -104,7 +104,7 @@ export const ThemeProvider = ({ children }) => {
     .animate-bounce:hover { animation: bounce 0.5s ease; }
     .animate-shake { animation: shake 0.4s ease; }
     .hover-pulse:hover { animation: pulse 0.3s ease; }
-    /* Ripple effect */
+   
     .ripple {
       position: relative;
       overflow: hidden;
@@ -125,7 +125,7 @@ export const ThemeProvider = ({ children }) => {
       width: 200%;
       height: 200%;
     }
-    /* Staggered children */
+   
     .stagger > * {
       animation: fadeInUp 0.4s ease-out backwards;
     }
@@ -135,12 +135,12 @@ export const ThemeProvider = ({ children }) => {
     .stagger > *:nth-child(4) { animation-delay: 0.2s; }
     .stagger > *:nth-child(5) { animation-delay: 0.25s; }
     .stagger > *:nth-child(6) { animation-delay: 0.3s; }
-    /* Scrollbar */
+   
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #2d1a1a; border-radius: 10px; }
     ::-webkit-scrollbar-thumb { background: ${current.primary}; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: ${current.secondary}; }
-    /* Loading spinner */
+  
     .spinner {
       width: 40px;
       height: 40px;
